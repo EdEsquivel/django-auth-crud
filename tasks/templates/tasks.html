@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<<<<<<< HEAD
 <h1>Tasks Pending</h1>
-=======
-<h1>Tasks</h1>
->>>>>>> 83e2a5e30fa69fb878491d6b67e558b3f4fcd6e9
 
 <ul>
     {% for task in tasks %}
@@ -19,11 +15,8 @@
 
                 <p>{{task.description}}</p>
                 <p>{{task.user.username}}</p>
-<<<<<<< HEAD
 
                 <p>{{task.datecompleted|date:'M j Y:i'}}</p>
-=======
->>>>>>> 83e2a5e30fa69fb878491d6b67e558b3f4fcd6e9
             </a>
         </li>
     {% endfor %}
