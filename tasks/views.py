@@ -5,8 +5,11 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TaskForm
 from .models import Task
+<<<<<<< HEAD
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+=======
+>>>>>>> 83e2a5e30fa69fb878491d6b67e558b3f4fcd6e9
 
 # Create your views here.
 
@@ -14,6 +17,10 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'home.html')
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83e2a5e30fa69fb878491d6b67e558b3f4fcd6e9
 def signup(request):
 
     if request.method == 'GET':
@@ -38,18 +45,25 @@ def signup(request):
             'form': UserCreationForm,
             'error': 'Passwords do not match'
         })
+<<<<<<< HEAD
 
 @login_required    
+=======
+    
+>>>>>>> 83e2a5e30fa69fb878491d6b67e558b3f4fcd6e9
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tasks.html', {'tasks': tasks})
 
+<<<<<<< HEAD
 @login_required
 def tasks_completed(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
     return render(request, 'tasks.html', {'tasks': tasks})
 
 @login_required
+=======
+>>>>>>> 83e2a5e30fa69fb878491d6b67e558b3f4fcd6e9
 def create_task(request):
     if request.method == 'GET':
         return render(request, 'create_task.html', {
@@ -68,6 +82,7 @@ def create_task(request):
                 'error': 'Please provide valid data for task creation'
             })
 
+<<<<<<< HEAD
 @login_required
 def task_detail(request, task_id):
     if request.method == 'GET':
@@ -99,6 +114,12 @@ def delete_task(request, task_id):
         return redirect('tasks')
 
 @login_required
+=======
+def task_detail(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    return render(request, 'task_detail.html', {'task': task})
+
+>>>>>>> 83e2a5e30fa69fb878491d6b67e558b3f4fcd6e9
 def signout(request):
     logout(request)
     return redirect('home')
